@@ -190,7 +190,7 @@ function AtlasLib.Main(Name,X,Y)
         BackgroundTransparency = 1;
         BorderSizePixel = 0;
         Position = UDim2.new(0,46,0,0);
-        Size = UDim2.new(0.2,0,1,0);
+        Size = UDim2.new(0,100,1,0);
         ZIndex = 3;
     })
 
@@ -264,23 +264,23 @@ function AtlasLib.Main(Name,X,Y)
     })
 
 
-	local TabsButtons = CreateModule.Instance("Frame",{
-		Parent = Topbar;
-		Name = "TabsButtons";
+    local TabsButtons = CreateModule.Instance("Frame",{
+        Parent = Topbar;
+        Name = "TabsButtons";
         BackgroundTransparency = 1;
-		BorderSizePixel = 0;
-        Position = UDim2.new(0.27,0,0,0);
-        Size = UDim2.new(0.73,0,1,0);
+        BorderSizePixel = 0;
+        Position = UDim2.new(0.18,0,0,0);
+        Size = UDim2.new(0.82,0,1,0);
         ZIndex = 3;
-	})
+    })
 
 
-	local ButtonsList = CreateModule.Instance("UIListLayout",{
-		Parent = TabsButtons;
+    local ButtonsList = CreateModule.Instance("UIListLayout",{
+        Parent = TabsButtons;
         FillDirection = Enum.FillDirection.Horizontal;
         SortOrder = Enum.SortOrder.LayoutOrder;
-    Padding = UDim.new(0,6)
-	})
+        Padding = UDim.new(0,4)
+    })
 
     local IsGuiOpened = true
 
