@@ -269,7 +269,7 @@ function AtlasLib.Main(Name,X,Y)
 		Name = "TabsButtons";
         BackgroundTransparency = 1;
 		BorderSizePixel = 0;
-		Position = UDim2.new(0.3,0,0,0);
+        Position = UDim2.new(0.34,8,0,0);
 		Size = UDim2.new(0.7,0,1,0);
         ZIndex = 3;
 	})
@@ -279,7 +279,7 @@ function AtlasLib.Main(Name,X,Y)
 		Parent = TabsButtons;
         FillDirection = Enum.FillDirection.Horizontal;
         SortOrder = Enum.SortOrder.LayoutOrder;
-        Padding = UDim.new(0,10)
+    Padding = UDim.new(0,6)
 	})
 
     local IsGuiOpened = true
