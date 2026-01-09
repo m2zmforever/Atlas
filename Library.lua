@@ -279,8 +279,68 @@ function AtlasLib.Main(Name,X,Y)
         Parent = TabsButtons;
         FillDirection = Enum.FillDirection.Horizontal;
         SortOrder = Enum.SortOrder.LayoutOrder;
-        Padding = UDim.new(0,4)
+		Padding = UDim.new(0,4)
     })
+
+    local TabButtonsList = {}
+    local CurrentTabPage = 1
+    local TabsPerPage = 5
+
+    local PrevArrow = CreateModule.Instance("TextButton",{
+        Parent = Topbar;
+        Name = "PrevArrow";
+        BackgroundTransparency = 1;
+        BorderSizePixel = 0;
+        Position = UDim2.new(TabsButtons.Position.X.Scale, -18, 0.5, 0);
+        AnchorPoint = Vector2.new(0.5,0.5);
+        Size = UDim2.new(0,24,0,24);
+        Font = Enum.Font[AtlasLib["Theme"]["Font"]];
+        Text = "<";
+        TextSize = 20;
+        TextColor3 = Darker(AtlasLib["Theme"]["FontColor"],1.5);
+        ZIndex = 4;
+    })
+
+    local NextArrow = CreateModule.Instance("TextButton",{
+        Parent = Topbar;
+        Name = "NextArrow";
+        BackgroundTransparency = 1;
+        BorderSizePixel = 0;
+        Position = UDim2.new(TabsButtons.Position.X.Scale + TabsButtons.Size.X.Scale, -18, 0.5, 0);
+        AnchorPoint = Vector2.new(0.5,0.5);
+        Size = UDim2.new(0,24,0,24);
+        Font = Enum.Font[AtlasLib["Theme"]["Font"]];
+        Text = ">";
+        TextSize = 20;
+        TextColor3 = Darker(AtlasLib["Theme"]["FontColor"],1.5);
+        ZIndex = 4;
+    })
+
+    local function updateTabPages()
+        local totalPages = math.max(1, math.ceil(#TabButtonsList / TabsPerPage))
+        if CurrentTabPage > totalPages then CurrentTabPage = totalPages end
+        for i, btn in ipairs(TabButtonsList) do
+            local pageIndex = math.ceil(i / TabsPerPage)
+            btn.Visible = (pageIndex == CurrentTabPage)
+        end
+        PrevArrow.Visible = (CurrentTabPage > 1)
+        NextArrow.Visible = (CurrentTabPage < totalPages)
+    end
+
+    PrevArrow.MouseButton1Click:Connect(function()
+        if CurrentTabPage > 1 then
+            CurrentTabPage = CurrentTabPage - 1
+            updateTabPages()
+        end
+    end)
+
+    NextArrow.MouseButton1Click:Connect(function()
+        local totalPages = math.max(1, math.ceil(#TabButtonsList / TabsPerPage))
+        if CurrentTabPage < totalPages then
+            CurrentTabPage = CurrentTabPage + 1
+            updateTabPages()
+        end
+    end)
 
     local IsGuiOpened = true
 
@@ -566,6 +626,9 @@ function AtlasLib.Main(Name,X,Y)
             PageLayout:JumpTo(Page)
             TweenService:Create(Fader,TweenInfo.new(0.3),{BackgroundTransparency = 1}):Play()
         end
+        table.insert(TabButtonsList, TabButton)
+        CurrentTabPage = math.ceil(#TabButtonsList / TabsPerPage)
+        updateTabPages()
         local InPage = {}
 
         function InPage.Section(Text)
