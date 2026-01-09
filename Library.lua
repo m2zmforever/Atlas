@@ -1,10 +1,12 @@
---     ___   __  __              __    _ __                         
---    /   | / /_/ /___ ______   / /   (_) /_  _________ ________  __
---   / /| |/ __/ / __ `/ ___/  / /   / / __ \/ ___/ __ `/ ___/ / / /
---  / ___ / /_/ / /_/ (__  )  / /___/ / /_/ / /  / /_/ / /  / /_/ / 
--- /_/  |_\__/_/\__,_/____/  /_____/_/_.___/_/   \__,_/_/   \__, /  
---                                                         /____/   
--- Made by m2_zm.
+--       db      mm   `7MM                       `7MMF'        db *MM        
+--      ;MM:     MM     MM                         MM              MM        
+--     ,V^MM.  mmMMmm   MM   ,6"Yb.  ,pP"Ybd       MM        `7MM  MM,dMMb.  
+--    ,M  `MM    MM     MM  8)   MM  8I   `"       MM          MM  MM    `Mb 
+--    AbmmmqMA   MM     MM   ,pm9MM  `YMMMa.       MM      ,   MM  MM     M8 
+--   A'     VML  MM     MM  8M   MM  L.   I8       MM     ,M   MM  MM.   ,M9 
+-- .AMA.   .AMMA.`Mbmo.JMML.`Moo9^Yo.M9mmmP'     .JMMmmmmMMM .JMML.P^YbmdP'  
+--
+-- Developed by m2_zm                                                                                                                                      
 
 
 local TweenService = game:GetService("TweenService")
