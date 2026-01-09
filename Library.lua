@@ -627,7 +627,6 @@ function AtlasLib.Main(Name,X,Y)
             TweenService:Create(Fader,TweenInfo.new(0.3),{BackgroundTransparency = 1}):Play()
         end
         table.insert(TabButtonsList, TabButton)
-        CurrentTabPage = math.ceil(#TabButtonsList / TabsPerPage)
         updateTabPages()
         local InPage = {}
 
