@@ -269,8 +269,8 @@ function AtlasLib.Main(Name,X,Y)
 		Name = "TabsButtons";
         BackgroundTransparency = 1;
 		BorderSizePixel = 0;
-        Position = UDim2.new(0.34,8,0,0);
-		Size = UDim2.new(0.7,0,1,0);
+        Position = UDim2.new(0.27,0,0,0);
+        Size = UDim2.new(0.73,0,1,0);
         ZIndex = 3;
 	})
 
