@@ -1,4 +1,4 @@
-# Atlas — Murder Mystery 2 Script
+# Atlas
 
 <details>
   <summary> Murder Mystery 2</summary>
