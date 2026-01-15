@@ -7,7 +7,6 @@
 -- .AMA.   .AMMA.`Mbmo.JMML.`Moo9^Yo.M9mmmP'     .JMMmmmmMMM .JMML.P^YbmdP'  
 --
 -- Developed by m2_zm                                                                                                                                      
-
 local TweenService = game:GetService("TweenService")
 local InputService = game:GetService("UserInputService")
 
@@ -460,7 +459,7 @@ function AtlasLib.Main(Name,X,Y)
     InMain.Nofitication = InMain.Notification
 
 	function InMain.Tab(Text)
-        TabCount += 1
+        TabCount = TabCount + 1
 
 		local TabButton = CreateModule.Instance("TextButton",{
 			Parent = TabsButtons;
