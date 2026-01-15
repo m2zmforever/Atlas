@@ -7,6 +7,7 @@
 -- .AMA.   .AMMA.`Mbmo.JMML.`Moo9^Yo.M9mmmP'     .JMMmmmmMMM .JMML.P^YbmdP'  
 --
 -- Developed by m2_zm                                                                                                                                      
+
 local TweenService = game:GetService("TweenService")
 local InputService = game:GetService("UserInputService")
 
@@ -459,7 +460,7 @@ function AtlasLib.Main(Name,X,Y)
     InMain.Nofitication = InMain.Notification
 
 	function InMain.Tab(Text)
-        TabCount = TabCount + 1
+        TabCount += 1
 
 		local TabButton = CreateModule.Instance("TextButton",{
 			Parent = TabsButtons;
@@ -1414,6 +1415,20 @@ function AtlasLib.Main(Name,X,Y)
                             NewSelectable(tostring(string),tostring(value))
                         elseif ind == 2 then
                             NewSelectable(tostring(value),tostring(string))
+                        end
+                    end
+                end
+                function InDropdown.Set(selectionString)
+                    if typeof(selectionString) ~= "string" then return end
+                    DropdownButton.Text = "  " .. selectionString
+                end
+                function InDropdown.SetByIndex(idx)
+                    local i = 0
+                    for k,v in next,Selectables do
+                        i = i + 1
+                        if i == tonumber(idx) then
+                            DropdownButton.Text = "  " .. tostring(v)
+                            return
                         end
                     end
                 end
