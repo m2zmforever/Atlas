@@ -8,7 +8,6 @@
 --
 -- Developed by m2_zm                                                                                                                                      
 
-
 local TweenService = game:GetService("TweenService")
 local InputService = game:GetService("UserInputService")
 
@@ -20,7 +19,6 @@ local AtlasLib = {
 		["HideKey"] = "LeftControl"
 	}
 }
-
 
 local CreateModule = {
     reg = {}
@@ -62,14 +60,14 @@ function AtlasLib.Main(Name,X,Y)
 		end
 	end
 
-	local OcerLib = CreateModule.Instance("ScreenGui",{
-		Name = "AtlasLib";
-		Parent = game.CoreGui;
-	})
+    AtlasLib.ScreenGui = CreateModule.Instance("ScreenGui",{
+        Name = "AtlasLib";
+        Parent = game.CoreGui;
+    })
 
     local LoadingScreen = CreateModule.Instance("Frame",{
         Name = "LoadingScreen";
-        Parent = OcerLib;
+        Parent = AtlasLib.ScreenGui;
         BackgroundColor3 = Darker(Color3.fromRGB(30,30,35),1.15);
         BackgroundTransparency = 0;
         BorderSizePixel = 0;
@@ -130,8 +128,8 @@ function AtlasLib.Main(Name,X,Y)
     LoadingScreen:Destroy()
 
     local Load = CreateModule.Instance("Frame",{
-		Name = "LoadFrame";
-		Parent = OcerLib;
+        Name = "LoadFrame";
+        Parent = AtlasLib.ScreenGui;
 		BackgroundColor3 = Color3.fromRGB(30,30,35);
         BackgroundTransparency = 1;
 		BorderSizePixel = 0;
@@ -146,8 +144,8 @@ function AtlasLib.Main(Name,X,Y)
     })
 
     local Topbar = CreateModule.Instance("Frame",{
-		Name = "Topbar";
-		Parent = OcerLib;
+        Name = "Topbar";
+        Parent = AtlasLib.ScreenGui;
 		BackgroundColor3 = Darker(Color3.fromRGB(30,30,35),1.15);
 		BorderSizePixel = 0;
 		Position = UDim2.new(0.3,0,0.25,0);
@@ -368,7 +366,7 @@ function AtlasLib.Main(Name,X,Y)
         local yOffset = 0.8 - (NotificationOffset * #ActiveNotifications)
         
         local Bar = CreateModule.Instance("Frame",{
-            Parent = OcerLib;
+            Parent = AtlasLib.ScreenGui;
             Name = HeaderText;
             BackgroundColor3 = Color3.fromRGB(30,30,33);
             BorderSizePixel = 0;
@@ -1412,6 +1410,209 @@ function AtlasLib.Main(Name,X,Y)
                         end
                     end
                     wait()
+                    for string,value in next,selec do
+                        if ind == 1 then
+                            NewSelectable(tostring(string),tostring(value))
+                        elseif ind == 2 then
+                            NewSelectable(tostring(value),tostring(string))
+                        end
+                    end
+                end
+                AddToReg(Dropdown)
+                return InDropdown;
+            end
+
+            function InSection.MultiDropdown(Text,Selectables,ind,func)
+                local Dropdown = CreateModule.Instance("Frame",{
+                    Parent = SectionElements;
+                    Name = Text;
+                    BackgroundColor3 = Darker(Color3.fromRGB(32,32,37),1.15);
+                    BorderSizePixel = 0;
+                    BorderColor3 = Color3.fromRGB(40,40,40);
+                    Position = UDim2.new(0,0,0,0);
+                    Size = UDim2.new(0.95,0,0,20);
+                    ClipsDescendants = true;
+                })
+                local DropdownButton = CreateModule.Instance("TextButton",{
+                    Parent = Dropdown;
+                    Name = "DropdownButton";
+                    BackgroundTransparency = 1;
+                    BorderSizePixel = 0;
+                    BorderColor3 = Color3.fromRGB(40,40,40);
+                    Position = UDim2.new(0,0,0,0);
+                    Size = UDim2.new(1,0,0,20);
+                    Font = Enum.Font[AtlasLib["Theme"]["Font"]];
+                    Text = "  " .. Text;
+                    TextSize = 16;
+                    TextColor3 = Darker(AtlasLib["Theme"]["FontColor"],1.5);
+                    TextXAlignment = Enum.TextXAlignment.Left;
+                    TextYAlignment = Enum.TextYAlignment.Center;
+                    AutoButtonColor = false;
+                })
+
+                local DropdownImage = CreateModule.Instance("ImageLabel",{
+                    Parent = DropdownButton;
+                    AnchorPoint = Vector2.new(0, 0.5);
+                    BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+                    BackgroundTransparency = 1.000;
+                    BorderSizePixel = 0;
+                    Position = UDim2.new(0.9, 0, 0.5, 0);
+                    Size = UDim2.new(0, 20, 0, 20);
+                    Image = "rbxassetid://3926305904";
+                    ImageColor3 = Color3.fromRGB(136, 136, 136);
+                    ImageRectOffset = Vector2.new(44, 404);
+                    ImageRectSize = Vector2.new(36, 36);
+                    Rotation = 0;
+                })
+
+
+                local List = CreateModule.Instance("ScrollingFrame",{
+                    Parent = Dropdown;
+                    Name = 'List';
+                    BackgroundTransparency = 1;
+                    BorderSizePixel = 0;
+                    Position = UDim2.new(0,0,0,20);
+                    Size = UDim2.new(1,0,0,0);
+                    CanvasSize = UDim2.new(0,0,0,0);
+                    AutomaticCanvasSize = Enum.AutomaticSize.Y;
+                    ScrollBarThickness = 0;
+                    ScrollBarImageTransparency = 1;
+                })
+
+
+                local DropdownList = CreateModule.Instance("UIListLayout",{
+                    Parent = List;
+                    Padding = UDim.new(0,5);
+                    HorizontalAlignment = Enum.HorizontalAlignment.Center;
+                    SortOrder = Enum.SortOrder.LayoutOrder;
+                })
+
+                CreateModule.Instance("Frame",{
+                    Parent = List;
+                    Name = 'ign';
+                    BackgroundTransparency = 1;
+                    BorderSizePixel = 0;
+                    Position = UDim2.new(0,0,0,0);
+                    Size = UDim2.new(0,0,0,0);
+                    LayoutOrder = -99999;
+                })
+
+                local Corner = CreateModule.Instance("UICorner",{
+                    Parent = Dropdown;
+                    Name = "Corner";
+                    CornerRadius = UDim.new(0,5);
+                })
+
+                local Stroke = CreateModule.Instance("UIStroke",{
+                    Parent = Dropdown;
+                    Name = "Stroke";
+                    Thickness = 1;
+                    Color = Color3.fromRGB(40,40,40);
+                    ApplyStrokeMode = Enum.ApplyStrokeMode.Border;
+                })
+
+                local IsOpened = false
+
+                DropdownButton.MouseButton1Click:Connect(function()
+                    IsOpened = not IsOpened
+                    if IsOpened then
+                        Dropdown:TweenSize(UDim2.new(0.95,0,0,120),"Out","Quart",0.3,true)
+                        List:TweenSize(UDim2.new(1,0,0,100),"Out","Quart",0.3,true)
+                        TweenService:Create(DropdownImage,TweenInfo.new(0.3),{Rotation = 180}):Play()
+                    else
+                        Dropdown:TweenSize(UDim2.new(0.95,0,0,20),"Out","Quart",0.3,true)
+                        List:TweenSize(UDim2.new(1,0,0,0),"Out","Quart",0.3,true)
+                        TweenService:Create(DropdownImage,TweenInfo.new(0.3),{Rotation = 0}):Play()
+                    end
+                end)
+
+                local Selected = {}
+
+                local function NewSelectable(string,value)
+                    local Selectable = CreateModule.Instance("TextButton",{
+                        Parent = List;
+                        Name = string;
+                        BackgroundTransparency = 1;
+                        BorderSizePixel = 0;
+                        BorderColor3 = Color3.fromRGB(40,40,40);
+                        Position = UDim2.new(0,0,0,0);
+                        Size = UDim2.new(0.95,0,0,20);
+                        Font = Enum.Font[AtlasLib["Theme"]["Font"]];
+                        Text = "  " .. string;
+                        TextSize = 16;
+                        TextColor3 = Darker(AtlasLib["Theme"]["FontColor"],1.5);
+                        TextXAlignment = Enum.TextXAlignment.Left;
+                        TextYAlignment = Enum.TextYAlignment.Center;
+                        AutoButtonColor = false;
+                    })
+
+                    local Check = CreateModule.Instance("TextLabel",{
+                        Parent = Selectable;
+                        Name = "Check";
+                        BackgroundTransparency = 1;
+                        BorderSizePixel = 0;
+                        Position = UDim2.new(0.88, 0, 0, 0);
+                        Size = UDim2.new(0.1,0,0,20);
+                        Font = Enum.Font[AtlasLib["Theme"]["Font"]];
+                        Text = "";
+                        TextSize = 16;
+                        TextColor3 = AtlasLib["Theme"]["FontColor"];
+                        TextXAlignment = Enum.TextXAlignment.Center;
+                        TextYAlignment = Enum.TextYAlignment.Center;
+                    })
+
+                    local Corner = CreateModule.Instance("UICorner",{
+                        Parent = Selectable;
+                        Name = "Corner";
+                        CornerRadius = UDim.new(0,5);
+                    })
+    
+                    local Stroke = CreateModule.Instance("UIStroke",{
+                        Parent = Selectable;
+                        Name = "Stroke";
+                        Thickness = 1;
+                        Color = Color3.fromRGB(40,40,40);
+                        ApplyStrokeMode = Enum.ApplyStrokeMode.Border;
+                    })
+
+                    Selectable.MouseEnter:Connect(function()
+                        TweenService:Create(Selectable,TweenInfo.new(0.3),{TextColor3 = AtlasLib["Theme"]["FontColor"]}):Play()
+                        TweenService:Create(Selectable,TweenInfo.new(0.3),{BackgroundColor3 = Color3.fromRGB(32,32,37)}):Play()
+                    end)
+            
+                    Selectable.MouseLeave:Connect(function()
+                        TweenService:Create(Selectable,TweenInfo.new(0.3),{TextColor3 = Darker(AtlasLib["Theme"]["FontColor"],1.5)}):Play()
+                        TweenService:Create(Selectable,TweenInfo.new(0.3),{BackgroundColor3 = Darker(Color3.fromRGB(32,32,37),1.15)}):Play()
+                    end)
+
+                    Selectable.MouseButton1Click:Connect(function()
+                        Selected[string] = not Selected[string]
+                        if Selected[string] then
+                            Check.Text = "●"
+                        else
+                            Check.Text = ""
+                        end
+                        pcall(func, string, value)
+                    end)
+                end
+
+                for string,value in next,Selectables do
+                    if ind == 1 then
+                        NewSelectable(tostring(string),tostring(value))
+                    elseif ind == 2 then
+                        NewSelectable(tostring(value),tostring(string))
+                    end
+                end
+
+                local InDropdown = {}
+                function InDropdown.Refresh(selec)
+                    for i,v in next,List:GetChildren() do
+                        if v.ClassName == "TextButton" then
+                            v:Destroy()
+                        end
+                    end
+                    wait()
+                    Selected = {}
                     for string,value in next,selec do
                         if ind == 1 then
                             NewSelectable(tostring(string),tostring(value))
