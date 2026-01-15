@@ -1556,7 +1556,7 @@ function AtlasLib.Main(Name,X,Y)
                         Font = Enum.Font[AtlasLib["Theme"]["Font"]];
                         Text = "";
                         TextSize = 16;
-                        TextColor3 = AtlasLib["Theme"]["FontColor"];
+                        TextColor3 = Darker(AtlasLib["Theme"]["FontColor"],1.5);
                         TextXAlignment = Enum.TextXAlignment.Center;
                         TextYAlignment = Enum.TextYAlignment.Center;
                     })
@@ -1588,11 +1588,12 @@ function AtlasLib.Main(Name,X,Y)
                     Selectable.MouseButton1Click:Connect(function()
                         Selected[string] = not Selected[string]
                         if Selected[string] then
-                            Check.Text = "●"
+                            Check.Text = "✓"
                         else
                             Check.Text = ""
                         end
                         pcall(func, string, value)
+                        -- keep dropdown open to allow multiple selections
                     end)
                 end
 
