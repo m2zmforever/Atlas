@@ -41,4 +41,8 @@
 
 </details>
 
+**Note: This script is not for Autofarm. (It will not work properly.)**
+
 ---
+
+
