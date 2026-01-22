@@ -110,15 +110,22 @@ function AtlasLib.Main(Name,X,Y)
         Name = "Status";
         BackgroundTransparency = 1;
         Font = Enum.Font[AtlasLib["Theme"]["Font"]];
-        Text = "Loading...";
+        Text = "Loading Modules...";
         TextSize = 12;
         TextColor3 = Darker(AtlasLib["Theme"]["FontColor"],1.5);
         Position = UDim2.new(0,0,0.75,0);
         Size = UDim2.new(1,0,0.2,0);
         ZIndex = 101;
     })
-
-    wait(1.6)
+    wait(0.2)
+    LoadingStatus.Text = "Loading Modules..."
+    wait(0.5)
+    LoadingStatus.Text = "Loading UI Library..."
+    wait(0.5)
+    LoadingStatus.Text = "Applying Theme..."
+    wait(0.45)
+    LoadingStatus.Text = "Finalizing..."
+    wait(0.45)
 
     TweenService:Create(LoadingScreen, TweenInfo.new(0.3), {BackgroundTransparency = 1}):Play()
     TweenService:Create(LoadingStroke, TweenInfo.new(0.3), {Transparency = 1}):Play()
