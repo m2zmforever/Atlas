@@ -9,7 +9,6 @@
   - Kill All
   - Kill Aura
   - Kill All Whitelist
-  - Auto Kill All option
   - Grab Gun / Auto Grab Gun
   - Shoot Murderer
   - Teleport behind Murderer and shoot
@@ -27,19 +26,21 @@
   - Anti Fling / Touch Fling
   - Headless
   - Teleport to Map and Teleport to Player
-  - Invisibility (Maybe not client-side xd)
+  - Invisibility
   - Map Vote Spam
+  - Auto Mystery Box Open
 
   Visuals & ESP
-  - Player ESP / Highlights
-  - Name ESP / Overhead labels
+  - Player ESP
+  - Name ESP
   - Gun ESP
-  - Dead-ESP
   - X-ray
   - Round Timer
   - Send Roles to Chat
 
 </details>
+
+---
 
 **Note: This script is not for Autofarm. (It will not work properly.)**
 
