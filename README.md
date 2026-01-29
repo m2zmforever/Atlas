@@ -1,11 +1,11 @@
-# Atlas — Murder Mystery 2 Script
+# Atlas — Murder Mystery 2
 
 <details>
-  <summary> Murder Mystery 2</summary>
+  <summary>Features</summary>
 
   #### Features:
 
-  Combat
+  *Combat*
   - Kill All
   - Kill Aura
   - Kill All Whitelist
@@ -13,24 +13,25 @@
   - Shoot Murderer
   - Teleport behind Murderer and shoot
 
-  Farming
-  - Auto Farm (coins)
+  *Farming*
+  - AutoFarm (coins)
   - Reset if No Coin
   - Teleport to Lobby if No Coin 
-  - Kill All if No Coin
+  - No Render (disables 3D render)
 
-  Movement & Utility
+  *Movement & Utility*
   - Walk Speed modifier
   - Noclip
   - Void Protection
-  - Anti Fling / Touch Fling
+  - Anti Fling / Touch Fling / Fling
   - Headless
-  - Teleport to Map and Teleport to Player
+  - Teleport to Map / Lobby / Player
   - Invisibility
   - Map Vote Spam
   - Auto Mystery Box Open
-
-  Visuals & ESP
+  - Anti AFK
+  
+  *Visuals & ESP*
   - Player ESP
   - Name ESP
   - Gun ESP
