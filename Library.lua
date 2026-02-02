@@ -1156,7 +1156,7 @@ function AtlasLib.Main(Name,X,Y)
                     Size = UDim2.new(1,0,1,0);
                     Font = Enum.Font[AtlasLib["Theme"]["Font"]];
                     TextColor3 = Darker(AtlasLib["Theme"]["FontColor"],1.5);
-                    Text = tostring(defvalue) .. "/".. max  or tostring(min) .. "/".. max ;
+                    Text = tostring(defvalue and defvalue or min) .. "/" .. tostring(max);
                     TextSize = 16;
                     TextXAlignment = Enum.TextXAlignment.Center;
                     ZIndex = 2;
@@ -1204,7 +1204,8 @@ function AtlasLib.Main(Name,X,Y)
 					Progress:TweenSize(UDim2.new(percent, 0, 1, 0),"Out","Sine",1,true)
 				end
 
-				UpdateSlider(defvalue)
+                UpdateSlider(defvalue)
+                ValueLabel.Text = tostring(defvalue and defvalue or min) .. "/" .. tostring(max)
 
 				local IsSliding,Dragging = false
 				local RealValue = defvalue
@@ -1215,9 +1216,14 @@ function AtlasLib.Main(Name,X,Y)
 					local size = UDim2.new(math.clamp((Pressed.Position.X - Bar.AbsolutePosition.X) / Bar.AbsoluteSize.X, 0, 1), 0, 1, 0)
 					Progress:TweenSize(size, "Out", "Quart", 0.2,true);
 					RealValue = (((pos.X.Scale * max) / max) * (max - min) + min)
-					value = (precise and string.format("%.1f", tostring(RealValue))) or (math.floor(RealValue))
-					ValueLabel.Text = tostring(value) .. "/".. max 
-					func(value)
+                    value = (precise and string.format("%.1f", tostring(RealValue))) or (math.floor(RealValue))
+                    ValueLabel.Text = tostring(value) .. "/".. max 
+                    if type(func) == "function" then
+                        local okc, errc = pcall(func, value)
+                        if not okc then
+                            warn("Slider error: ", errc)
+                        end
+                    end
 				end
 
 				Bar.InputBegan:Connect(function(Pressed)
