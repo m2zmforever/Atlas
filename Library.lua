@@ -51,6 +51,11 @@ local function Brighter(Col,coe)
     return Color3.fromHSV(H,S,V * (coe or 1.5));
 end
 
+local function getEnumMember(enumType, memberName)
+    local ok, res = pcall(function() return enumType[memberName] end)
+    if ok then return res end
+    return nil
+end
 
 function AtlasLib.Main(Name,X,Y)
 
@@ -323,7 +328,7 @@ function AtlasLib.Main(Name,X,Y)
         ZIndex = 4;
     })
 
-    local function updateTabPages()
+    local function UpdateTabPages()
         local totalPages = math.max(1, math.ceil(#TabButtonsList / TabsPerPage))
         if CurrentTabPage > totalPages then CurrentTabPage = totalPages end
         for i, btn in ipairs(TabButtonsList) do
@@ -337,7 +342,7 @@ function AtlasLib.Main(Name,X,Y)
     PrevArrow.MouseButton1Click:Connect(function()
         if CurrentTabPage > 1 then
             CurrentTabPage = CurrentTabPage - 1
-            updateTabPages()
+            UpdateTabPages()
         end
     end)
 
@@ -345,14 +350,18 @@ function AtlasLib.Main(Name,X,Y)
         local totalPages = math.max(1, math.ceil(#TabButtonsList / TabsPerPage))
         if CurrentTabPage < totalPages then
             CurrentTabPage = CurrentTabPage + 1
-            updateTabPages()
+            UpdateTabPages()
         end
     end)
 
     local IsGuiOpened = true
 
     InputService.InputBegan:Connect(function(input,IsTyping)
-        if input.KeyCode == Enum.KeyCode[AtlasLib["Theme"]["HideKey"]] and not IsTyping then
+        if IsTyping then return end
+        local keyName = AtlasLib["Theme"]["HideKey"]
+        local keyEnum = getEnumMember(Enum.KeyCode, keyName)
+        local uitEnum = getEnumMember(Enum.UserInputType, keyName)
+        if (keyEnum and input.KeyCode == keyEnum) or (uitEnum and input.UserInputType == uitEnum) then
             spawn(function()
                 TweenService:Create(Load,TweenInfo.new(0.15),{BackgroundTransparency = 0}):Play()
                 wait(0.2)
@@ -455,7 +464,7 @@ function AtlasLib.Main(Name,X,Y)
             
             for i, notification in ipairs(ActiveNotifications) do
                 if notification == Bar then
-                    table.remove(ActiveNotifications, i)
+                    table.reMove(ActiveNotifications, i)
                     break
                 end
             end
@@ -634,7 +643,7 @@ function AtlasLib.Main(Name,X,Y)
             TweenService:Create(Fader,TweenInfo.new(0.3),{BackgroundTransparency = 1}):Play()
         end
         table.insert(TabButtonsList, TabButton)
-        updateTabPages()
+        UpdateTabPages()
         local InPage = {}
 
         function InPage.Section(Text)
@@ -876,7 +885,7 @@ function AtlasLib.Main(Name,X,Y)
                     Position = UDim2.new(0,0,0.5,0);
                     Size = UDim2.new(0,50,0,20);
                     Font = Enum.Font[AtlasLib["Theme"]["Font"]];
-                    Text = defkey and GetKeyDisplayName(Enum.KeyCode[defkey]) or "...";
+                    Text = displayKey;
                     TextSize = 16;
                     TextColor3 = Darker(AtlasLib["Theme"]["FontColor"],1.5);
                     TextXAlignment = Enum.TextXAlignment.Center;
@@ -901,10 +910,13 @@ function AtlasLib.Main(Name,X,Y)
 
                 local Key = defkey or nil
                 InputService.InputBegan:Connect(function(input)
-                    if input.UserInputType == Enum.UserInputType.Keyboard and Picking and input.KeyCode ~= Enum.KeyCode[AtlasLib["Theme"]["HideKey"]] then
-                        Key = tostring(input.KeyCode):gsub("Enum.KeyCode.","")
-                        Keybinder.Text = GetKeyDisplayName(input.KeyCode)
-                        Picked = true
+                    if input.UserInputType == Enum.UserInputType.Keyboard and Picking then
+                        local hideKey = getEnumMember(Enum.KeyCode, AtlasLib["Theme"]["HideKey"])
+                        if not (hideKey and input.KeyCode == hideKey) then
+                            Key = tostring(input.KeyCode):gsub("Enum.KeyCode.","")
+                            Keybinder.Text = GetKeyDisplayName(input.KeyCode)
+                            Picked = true
+                        end
                     end
                 end)
 
@@ -913,7 +925,11 @@ function AtlasLib.Main(Name,X,Y)
                     Keybinder.Text = "..."
                     spawn(function()
                         repeat wait() until Picked
-                        Keybinder.Text = GetKeyDisplayName(Enum.KeyCode[Key])
+                        local kdisp = "..."
+
+                        local kk = getEnumMember(Enum.KeyCode, Key)
+                        if kk then kdisp = GetKeyDisplayName(kk) else kdisp = tostring(Key) end
+                        Keybinder.Text = kdisp
                         pcall(func, Key)
                         Picking = false
                         Picked = false
@@ -1193,7 +1209,7 @@ function AtlasLib.Main(Name,X,Y)
 				local IsSliding,Dragging = false
 				local RealValue = defvalue
 				local value
-				local function move(Pressed)
+				local function Move(Pressed)
 					IsSliding = true;
 					local pos = UDim2.new(math.clamp((Pressed.Position.X - Bar.AbsolutePosition.X) / Bar.AbsoluteSize.X, 0, 1), 0, 1, 0)
 					local size = UDim2.new(math.clamp((Pressed.Position.X - Bar.AbsolutePosition.X) / Bar.AbsoluteSize.X, 0, 1), 0, 1, 0)
@@ -1208,7 +1224,7 @@ function AtlasLib.Main(Name,X,Y)
 					if Pressed.UserInputType == Enum.UserInputType.MouseButton1 then
 						Dragging = true
 						IsSliding = false
-                        move(Pressed)
+                        Move(Pressed)
                         TweenService:Create(Progress,TweenInfo.new(0.3),{BackgroundColor3 = Darker(AtlasLib["Theme"]["AccentColor"],1.2)}):Play()
 					end
 				end)
@@ -1218,13 +1234,13 @@ function AtlasLib.Main(Name,X,Y)
 						Dragging = false
 						IsSliding = false
                         TweenService:Create(Progress,TweenInfo.new(0.3),{BackgroundColor3 = Darker(AtlasLib["Theme"]["AccentColor"],1.7)}):Play()
-                        move(Pressed)
+                        Move(Pressed)
 					end
 				end)
 
 				game:GetService("UserInputService").InputChanged:Connect(function(Pressed)
 					if Dragging and Pressed.UserInputType == Enum.UserInputType.MouseMovement then
-                        move(Pressed)
+                        Move(Pressed)
 					end
 				end)
 
