@@ -378,6 +378,13 @@ function AtlasLib.Main(Name,X,Y)
     local ActiveNotifications = {}
     local NotificationOffset = 0.12
     
+    local function UpdateNotificationPositions()
+        for i, notification in ipairs(ActiveNotifications) do
+            local newYOffset = 0.8 - (NotificationOffset * (i - 1))
+            TweenService:Create(notification, TweenInfo.new(0.3), {Position = UDim2.new(0.78, 0, newYOffset, 0)}):Play()
+        end
+    end
+    
     function InMain.Notification(HeaderText,Text)
         local yOffset = 0.8 - (NotificationOffset * #ActiveNotifications)
         
@@ -464,11 +471,12 @@ function AtlasLib.Main(Name,X,Y)
             
             for i, notification in ipairs(ActiveNotifications) do
                 if notification == Bar then
-                    table.reMove(ActiveNotifications, i)
+                    table.remove(ActiveNotifications, i)
                     break
                 end
             end
             
+            UpdateNotificationPositions()
             Bar:Destroy()
         end)
     end
