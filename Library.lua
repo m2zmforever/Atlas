@@ -242,13 +242,7 @@ function AtlasLib.Main(Name,X,Y)
 
     Load.Size = UDim2.new(0,Topbar.Size.X.Offset,0,Topbar.Size.Y.Offset + Container.Size.Y.Offset -5);
     Border.Size = UDim2.new(0,Topbar.Size.X.Offset,0,Topbar.Size.Y.Offset + Container.Size.Y.Offset -5);
-    spawn(function()
-        wait(0.2)
-        TweenService:Create(Load,TweenInfo.new(0.3),{BackgroundTransparency = 0}):Play()
-        wait(0.45)
-        TweenService:Create(Load,TweenInfo.new(0.3),{BackgroundTransparency = 1}):Play()
-        Topbar.Visible = true
-    end)
+    Topbar.Visible = true
     local Corner = CreateModule.Instance("UICorner",{
         Parent = Container;
         Name = "Corner";
