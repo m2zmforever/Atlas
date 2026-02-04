@@ -350,6 +350,41 @@ function AtlasLib.Main(Name,X,Y)
 
     local IsGuiOpened = true
 
+    TabsButtons.ChildAdded:Connect(function()
+        task.spawn(UpdateTabPages)
+    end)
+    TabsButtons.ChildRemoved:Connect(function()
+        task.spawn(UpdateTabPages)
+    end)
+
+    spawn(function()
+        wait(0.1)
+        pcall(UpdateTabPages)
+        local activeIndex = nil
+        for i, btn in ipairs(TabButtonsList) do
+            local ok, val = pcall(function()
+                local v = btn:FindFirstChild("IsActive")
+                return v and v.Value
+            end)
+            if ok and val then
+                activeIndex = i
+                break
+            end
+        end
+        if activeIndex then
+            local pageName = TabButtonsList[activeIndex].Text
+            for _, page in next, Pages:GetChildren() do
+                if page.Name == pageName then
+                    pcall(function() PageLayout:JumpTo(page) end)
+                    if page:FindFirstChild("Fader") then
+                        page.Fader.BackgroundTransparency = 1
+                    end
+                    break
+                end
+            end
+        end
+    end)
+
     InputService.InputBegan:Connect(function(input,IsTyping)
         if IsTyping then return end
         local keyName = AtlasLib["Theme"]["HideKey"]
@@ -877,6 +912,23 @@ function AtlasLib.Main(Name,X,Y)
                         ["OEM102"] = "<",
                     }
                     return keyMap[keyString] or keyString
+                end
+
+                local Key = defkey
+                local displayKey = "..."
+                local kk = nil
+                if typeof(defkey) == "EnumItem" then
+                    kk = defkey
+                    Key = tostring(defkey):gsub("Enum.KeyCode.", "")
+                elseif type(defkey) == "string" then
+                    kk = getEnumMember(Enum.KeyCode, defkey)
+                end
+                if kk then
+                    displayKey = GetKeyDisplayName(kk)
+                elseif Key ~= nil then
+                    displayKey = tostring(Key)
+                else
+                    displayKey = "..."
                 end
 
                 local Keybinder = CreateModule.Instance("TextButton",{
