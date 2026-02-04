@@ -59,15 +59,38 @@ end
 
 function AtlasLib.Main(Name,X,Y)
 
-	for i,v in next,game.CoreGui:GetChildren() do
-		if v.Name == "AtlasLib" then
-			v:Destroy()
-		end
-	end
+    local Players = game:GetService("Players")
+    for i,v in next, game.CoreGui:GetChildren() do
+        if v.Name == "AtlasLib" then
+            v:Destroy()
+        end
+    end
+    if Players.LocalPlayer and Players.LocalPlayer:FindFirstChild("PlayerGui") then
+        for i,v in next, Players.LocalPlayer.PlayerGui:GetChildren() do
+            if v.Name == "AtlasLib" then
+                v:Destroy()
+            end
+        end
+    end
+
+    local function getGuiParent()
+        local pl = Players.LocalPlayer
+        if pl then
+            local ok, pg = pcall(function() return pl:WaitForChild("PlayerGui", 2) end)
+            if ok and pg then
+                return pg
+            end
+        end
+        return game.CoreGui
+    end
 
     AtlasLib.ScreenGui = CreateModule.Instance("ScreenGui",{
         Name = "AtlasLib";
-        Parent = game.CoreGui;
+        Parent = getGuiParent();
+        ResetOnSpawn = false;
+        DisplayOrder = 9999;
+        IgnoreGuiInset = true;
+        ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
     })
 
     local LoadingScreen = CreateModule.Instance("Frame",{
@@ -961,8 +984,6 @@ function AtlasLib.Main(Name,X,Y)
                 })
 
                 local Picked,Picking = false
-
-                local Key = defkey or nil
                 InputService.InputBegan:Connect(function(input)
                     if input.UserInputType == Enum.UserInputType.Keyboard and Picking then
                         local hideKey = getEnumMember(Enum.KeyCode, AtlasLib["Theme"]["HideKey"])
