@@ -32,4 +32,6 @@ return {
     Settings = "Instellingen",
     Keybinds = "Sneltoetsen",
     Features = "Functies",
+    CharacterResetsWarning = "Karakter reset bij uit.",
+    InvalidPositionWarning = "Hoog tempo = ongeldig pos, bruk 1.0",
 }

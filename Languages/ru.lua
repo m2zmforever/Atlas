@@ -32,4 +32,6 @@ return {
     Settings = "Параметры",
     Keybinds = "Горячие клавиши",
     Features = "Функции",
+    CharacterResetsWarning = "Персонаж сброс при откл.",
+    InvalidPositionWarning = "Высок. скор. = невалид. поз, ис. 1.0",
 }

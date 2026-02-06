@@ -32,4 +32,6 @@ return {
     Settings = "设置",
     Keybinds = "快捷键",
     Features = "功能",
+    CharacterResetsWarning = "禁用时重置",
+    InvalidPositionWarning = "高速=无效位置,用1.0",
 }

@@ -37,4 +37,6 @@ return {
     Settings = "Settings",
     Keybinds = "Keybinds",
     Features = "Features",
+    CharacterResetsWarning = "Char resets on disable",
+    InvalidPositionWarning = "High speed = invalid pos, use 1.0",
 }

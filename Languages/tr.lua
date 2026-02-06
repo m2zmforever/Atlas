@@ -37,4 +37,6 @@ return {
     Settings = "Ayarlar",
     Keybinds = "Tuş Bağları",
     Features = "Özellikler",
+    CharacterResetsWarning = "Devre dışı = sıfırlanır",
+    InvalidPositionWarning = "Yüksek hız = geçersiz konum, 1.0",
 }
