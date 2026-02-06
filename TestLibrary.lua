@@ -1112,7 +1112,7 @@ function AtlasLib.Main(Name,X,Y)
                 
                 local DynamicLabel = {
                     Instance = Label,
-                    Update = function(self)
+                    Update = function()
                         Label.Text = getTextFunc()
                     end
                 }
