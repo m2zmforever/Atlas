@@ -1201,6 +1201,8 @@ function AtlasLib.Main(Name,X,Y)
                     Position = UDim2.new(0,0,0.75,0);
                     Size = UDim2.new(1,0,0,20);
                     ClipsDescendants = true;
+                    Active = true;
+                    Selectable = true;
                 })
 
                 local ValueLabel = CreateModule.Instance("TextLabel",{
