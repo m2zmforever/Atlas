@@ -1273,7 +1273,7 @@ function AtlasLib.Main(Name,X,Y)
 					local size = UDim2.new(math.clamp((Pressed.Position.X - Bar.AbsolutePosition.X) / Bar.AbsoluteSize.X, 0, 1), 0, 1, 0)
 					Progress:TweenSize(size, "Out", "Quart", 0.2,true);
 					RealValue = (((pos.X.Scale * max) / max) * (max - min) + min)
-                    value = (precise and string.format("%.1f", tostring(RealValue))) or (math.floor(RealValue))
+                    value = (precise and tonumber(string.format("%.1f", RealValue))) or math.floor(RealValue)
                     ValueLabel.Text = tostring(value) .. "/".. max 
                     if type(func) == "function" then
                         local okc, errc = pcall(func, value)
