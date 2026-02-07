@@ -910,6 +910,9 @@ function AtlasLib.Main(Name,X,Y)
                         ["OEM7"] = "'",
                         ["OEM8"] = "§",
                         ["OEM102"] = "<",
+                        ["MouseButton2"] = "RMB",
+                        ["MouseButton1"] = "LMB",
+                        ["MauseButton3"] = "MMB"
                     }
                     return keyMap[keyString] or keyString
                 end
