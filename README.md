@@ -42,7 +42,8 @@
 
 ---
 **The script is compatible with both PCs and mobile devices.**
-**Xeno & Delta & Codex were tested.**
+---
+*Xeno & Delta & Codex were tested.*
 ---
 
 
