@@ -39,12 +39,10 @@
   - Send Roles to Chat
 
 </details>
-
 ---
-**The script is compatible with both PCs and mobile devices.**
----
-*Xeno & Delta & Codex were tested.*
----
-
+**For Use The Script**
+```
+loadstring(game:HttpGet("https://raw.githubusercontent.com/m2zmforever/Atlas/Release/loader.lua", true))()
+```
 
 
