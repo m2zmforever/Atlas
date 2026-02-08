@@ -16,7 +16,6 @@
   *Farming*
   - AutoFarm (coins)
   - Reset if No Coin
-  - Teleport to Lobby if No Coin 
   - No Render (disables 3D render)
 
   *Movement & Utility*
