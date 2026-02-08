@@ -1,10 +1,11 @@
---      db      mm   `7MM                         .g8"""bgd `7MM                         mm       `7MM"""Mq.   .g8"""bgd 
---     ;MM:     MM     MM                       .dP'     `M   MM                         MM         MM   `MM..dP'     `M 
---    ,V^MM.  mmMMmm   MM   ,6"Yb.  ,pP"Ybd     dM'       `   MMpMMMb.  .gP"Ya   ,6"Yb.mmMMmm       MM   ,M9 dM'       ` 
---   ,M  `MM    MM     MM  8)   MM  8I   `"     MM            MM    MM ,M'   Yb 8)   MM  MM         MMmmdM9  MM          
---   AbmmmqMA   MM     MM   ,pm9MM  `YMMMa.     MM.           MM    MM 8M""""""  ,pm9MM  MM         MM       MM.         
---  A'     VML  MM     MM  8M   MM  L.   I8     `Mb.     ,'   MM    MM YM.    , 8M   MM  MM         MM       `Mb.     ,' 
---.AMA.   .AMMA.`Mbmo.JMML.`Moo9^Yo.M9mmmP'       `"bmmmd'  .JMML  JMML.`Mbmmd' `Moo9^Yo.`Mbmo    .JMML.       `"bmmmd'  
+--       db      mm   `7MM                         .g8"""bgd `7MM                         mm       `7MM"""Mq.   .g8"""bgd 
+--      ;MM:     MM     MM                       .dP'     `M   MM                         MM         MM   `MM..dP'     `M 
+--     ,V^MM.  mmMMmm   MM   ,6"Yb.  ,pP"Ybd     dM'       `   MMpMMMb.  .gP"Ya   ,6"Yb.mmMMmm       MM   ,M9 dM'       ` 
+--    ,M  `MM    MM     MM  8)   MM  8I   `"     MM            MM    MM ,M'   Yb 8)   MM  MM         MMmmdM9  MM          
+--    AbmmmqMA   MM     MM   ,pm9MM  `YMMMa.     MM.           MM    MM 8M""""""  ,pm9MM  MM         MM       MM.         
+--   A'     VML  MM     MM  8M   MM  L.   I8     `Mb.     ,'   MM    MM YM.    , 8M   MM  MM         MM       `Mb.     ,' 
+-- .AMA.   .AMMA.`Mbmo.JMML.`Moo9^Yo.M9mmmP'       `"bmmmd'  .JMML  JMML.`Mbmmd' `Moo9^Yo.`Mbmo    .JMML.       `"bmmmd'  
+
 -- Developed by m2_zm / Never be able to release a stable version of this cheat...
 -- Curious Visitors, listen up: I won't steal your knives, guns, or pets, Stealing them would trouble my conscience...
 -- I am developing this to show how good a free, keyless, and premium-free script can be...
