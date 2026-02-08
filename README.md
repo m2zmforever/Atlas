@@ -41,9 +41,9 @@
 </details>
 
 ---
-
-**Note: This script is not for Autofarm. (It will not work properly.)**
-
+**The script is compatible with both PCs and mobile devices.**
+**Xeno & Delta & Codex were tested.**
 ---
+
 
 
