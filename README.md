@@ -29,6 +29,7 @@
   - Map Vote Spam
   - Auto Mystery Box Open
   - Anti AFK
+  - Anti Trade (Stealer)
   
   *Visuals & ESP*
   - Player ESP
