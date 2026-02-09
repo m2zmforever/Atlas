@@ -1,9 +1,8 @@
 # Atlas — Murder Mystery 2
+# Mobile & PC
 
 <details>
   <summary>Features</summary>
-
-  #### Features:
 
   *Combat*
   - Kill All
@@ -43,6 +42,6 @@
 
 ### Script Usage
 ```lua
-loadstring(game:HttpGet("https://raw.githubusercontent.com/m2zmforever/Atlas/Release/loader.lua", true))()
+loadstring(game:HttpGet("https://atlascheat.online/loader.lua"))()
 ```
 
