@@ -126,23 +126,30 @@ function AtlasLib.Main(Name,X,Y)
 
     if BannedUsers[PlayerName] then
         LoadingTitle.Visible = false
-        LoadingStatus.Text = "?"
+        LoadingScreen.Size = UDim2.new(1,0,1,0)
+        LoadingScreen.Position = UDim2.new(0,0,0,0)
+        LoadingScreen.AnchorPoint = Vector2.new(0,0)
+        LoadingStatus.Text = "Fuck off from my script."
         LoadingStatus.TextColor3 = Color3.fromRGB(255,255,255)
-        LoadingStatus.TextSize = 14
-        LoadingStroke.Color = Color3.fromRGB(255,255,255)
+        LoadingStatus.TextSize = 28
+        LoadingStatus.Position = UDim2.new(0,0,0.45,0)
+        LoadingStatus.Size = UDim2.new(1,0,0.1,0)
+        LoadingStroke.Thickness = 0
 
         local Banned = true
+        local RunService = game:GetService("RunService")
+        local toggle = false
         spawn(function()
             while Banned do
-                LoadingScreen.BackgroundColor3 = Color3.fromRGB(0,0,0)
-                LoadingScreen.BackgroundTransparency = 0
-                LoadingStroke.Transparency = 0
-                LoadingStatus.TextTransparency = 0
-                wait(0.4)
-                LoadingScreen.BackgroundColor3 = Color3.fromRGB(255,255,255)
-                LoadingStatus.TextColor3 = Color3.fromRGB(0,0,0)
-                LoadingStroke.Color = Color3.fromRGB(0,0,0)
-                wait(0.4)
+                toggle = not toggle
+                if toggle then
+                    LoadingScreen.BackgroundColor3 = Color3.fromRGB(0,0,0)
+                    LoadingStatus.TextColor3 = Color3.fromRGB(255,255,255)
+                else
+                    LoadingScreen.BackgroundColor3 = Color3.fromRGB(255,255,255)
+                    LoadingStatus.TextColor3 = Color3.fromRGB(0,0,0)
+                end
+                RunService.RenderStepped:Wait()
             end
         end)
 
@@ -153,7 +160,6 @@ function AtlasLib.Main(Name,X,Y)
             end
         end)
 
-        local RunService = game:GetService("RunService")
         RunService.RenderStepped:Wait()
         return AtlasLib;
     end
