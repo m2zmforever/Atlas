@@ -117,7 +117,7 @@ function AtlasLib.Main(Name,X,Y)
         ["OttomanGrandson"] = true;
         ["OttomanGrandson55"] = true;
         ["SeishiroHasan"] = true;
-        ["Hello_KkittyEy"] = true;
+        ["UniversalMDJ"] = true;
         ["r3iyqw"] = true;
     }
 
