@@ -114,10 +114,10 @@ function AtlasLib.Main(Name,X,Y)
     })
 
     local BannedUsers = {
-        ["OttomanGrandson"] = true;
+        ["UniversalMDJ"] = true;
         ["OttomanGrandson55"] = true;
         ["SeishiroHasan"] = true;
-        ["UniversalMDJ"] = true;
+        ["Hello_KkittyEy"] = true;
         ["r3iyqw"] = true;
     }
 
@@ -125,12 +125,8 @@ function AtlasLib.Main(Name,X,Y)
     local PlayerName = LocalPlayer and LocalPlayer.Name or ""
 
     if BannedUsers[PlayerName] then
-        if LocalPlayer then
-            LocalPlayer:Kick("Fuck off from my script.")
-        end
-
         LoadingTitle.Visible = false
-        LoadingStatus.Text = "..."
+        LoadingStatus.Text = "Fuck off from my script."
         LoadingStatus.TextColor3 = Color3.fromRGB(255,255,255)
         LoadingStatus.TextSize = 14
         LoadingStroke.Color = Color3.fromRGB(255,255,255)
@@ -147,6 +143,13 @@ function AtlasLib.Main(Name,X,Y)
                 LoadingStatus.TextColor3 = Color3.fromRGB(0,0,0)
                 LoadingStroke.Color = Color3.fromRGB(0,0,0)
                 wait(0.4)
+            end
+        end)
+
+        spawn(function()
+            wait(2)
+            if LocalPlayer then
+                LocalPlayer:Kick("Fuck off from my script.")
             end
         end)
 
