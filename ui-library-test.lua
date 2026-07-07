@@ -138,6 +138,16 @@ function AtlasLib.Main(Name,X,Y)
         LoadingStatus.Size = UDim2.new(1,0,0.1,0)
         LoadingStroke.Thickness = 0
 
+        local GlitchSound = CreateModule.Instance("Sound",{
+            Parent = AtlasLib.ScreenGui;
+            Name = "Glitch";
+            SoundId = "rbxassetid://86434757158825";
+            Volume = 1;
+            Loop = true;
+            PlayOnRemove = false;
+        })
+        GlitchSound:Play()
+      
         local Banned = true
         local RunService = game:GetService("RunService")
         local toggle = false
@@ -158,7 +168,7 @@ function AtlasLib.Main(Name,X,Y)
         spawn(function()
             wait(5)
             if LocalPlayer then
-                LocalPlayer:Kick("Fuck off from my script.")
+                LocalPlayer:Kick("Get another script faggot.")
             end
         end)
 
