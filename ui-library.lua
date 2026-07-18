@@ -283,15 +283,15 @@ function AevryxLib.Main(Name,X,Y)
 
     local BannerImage = CreateModule.Instance("ImageLabel",{
         Name = "BannerImage";
-        Parent = Load;
+        Parent = Border;
         BackgroundTransparency = 1;
         BorderSizePixel = 0;
         Image = "rbxassetid://130334083295026";
         ScaleType = Enum.ScaleType.Fit;
-        Size = UDim2.new(0,100,0,100);
+        Size = UDim2.new(0,130,0,130);
         Position = UDim2.new(0,8,1,-8);
         AnchorPoint = Vector2.new(0,1);
-        ZIndex = 6;
+        ZIndex = 10;
     })
 
     local PARTICLE_COUNT = 35
