@@ -428,7 +428,7 @@ function AevryxLib.Main(Name,X,Y)
 
     local TabsPadding = CreateModule.Instance("UIPadding",{
         Parent = TabsButtons;
-        PaddingLeft = UDim.new(0,0);
+        PaddingLeft = UDim.new(0,22);
         PaddingRight = UDim.new(0,30);
     })
 
@@ -485,7 +485,6 @@ function AevryxLib.Main(Name,X,Y)
         end
         PrevArrow.Visible = (CurrentTabPage > 1)
         NextArrow.Visible = (CurrentTabPage < totalPages)
-        TabsPadding.PaddingLeft = UDim.new(0, PrevArrow.Visible and 22 or 0)
     end
 
     PrevArrow.MouseButton1Click:Connect(function()
