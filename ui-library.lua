@@ -358,14 +358,14 @@ function AevryxLib.Main(Name,X,Y)
         ImageTransparency = 0;
         ScaleType = Enum.ScaleType.Fit;
         AnchorPoint = Vector2.new(0,1);
-        Position = UDim2.new(0,8,1,-8);
+        Position = UDim2.new(0,8,1,-2);
         Size = UDim2.new(0,BANNER_SIZE,0,BANNER_SIZE);
         ZIndex = 6;
     })
 
     Topbar.Changed:Connect(function(Property)
         if Property == "Position" then
-            BannerImage.Position = UDim2.new(0,8,1,-8)
+            BannerImage.Position = UDim2.new(0,8,1,-2)
         end
     end)
     local Corner = CreateModule.Instance("UICorner",{
