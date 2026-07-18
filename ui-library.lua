@@ -421,9 +421,15 @@ function AevryxLib.Main(Name,X,Y)
         Name = "TabsButtons";
         BackgroundTransparency = 1;
         BorderSizePixel = 0;
-        Position = UDim2.new(0,28,0,0);
-        Size = UDim2.new(0.9,0,1,0);
+        Position = UDim2.new(0,6,0,0);
+        Size = UDim2.new(1,-12,1,0);
         ZIndex = 3;
+    })
+
+    local TabsPadding = CreateModule.Instance("UIPadding",{
+        Parent = TabsButtons;
+        PaddingLeft = UDim.new(0,0);
+        PaddingRight = UDim.new(0,30);
     })
 
 
@@ -479,7 +485,7 @@ function AevryxLib.Main(Name,X,Y)
         end
         PrevArrow.Visible = (CurrentTabPage > 1)
         NextArrow.Visible = (CurrentTabPage < totalPages)
-        TabsButtons.Position = UDim2.new(0, PrevArrow.Visible and 28 or 6, 0, 0)
+        TabsPadding.PaddingLeft = UDim.new(0, PrevArrow.Visible and 22 or 0)
     end
 
     PrevArrow.MouseButton1Click:Connect(function()
